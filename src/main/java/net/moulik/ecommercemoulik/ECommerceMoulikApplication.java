@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ECommerceMoulikApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Project Started");
 		SpringApplication.run(ECommerceMoulikApplication.class, args);
 	}
 
