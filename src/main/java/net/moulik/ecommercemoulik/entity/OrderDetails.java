@@ -12,7 +12,8 @@ public class OrderDetails {
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
-    @OneToOne() // need clarification
+    @OneToOne()
+    @JoinColumn(name = "user_id")
     private User userId;
 
     @Column(name = "total", nullable = false, length = 128)
@@ -24,14 +25,20 @@ public class OrderDetails {
     @Column(name = "status", nullable = false, length = 128)
     private String status;
 
-    @Column(name = "createdAt", nullable = false, length = 128)
+    @Column(name = "created_at", nullable = false, length = 128)
     private Date createdAt;
 
-    @Column(name = "updatedAt", nullable = false, length = 128)
+    @Column(name = "updated_at", nullable = false, length = 128)
     private Date updatedAt;
 
-    @Column(name = "deletedAt", nullable = false, length = 128)
+    @Column(name = "deleted_at", nullable = false, length = 128)
     private Date deletedAt;
+
+    @OneToOne(mappedBy = "orderDetailsId", orphanRemoval = true, fetch = FetchType.LAZY)
+    private OrderItems orderItems;
+
+    @OneToOne(mappedBy = "orderDetailsId", orphanRemoval = true, fetch = FetchType.LAZY)
+    private PaymentDetails paymentDetails;
 
     public OrderDetails() {
     }

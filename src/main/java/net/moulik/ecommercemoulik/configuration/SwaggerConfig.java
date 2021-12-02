@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.moulik.ecommercemoulik.configuration;
 
 import static springfox.documentation.builders.PathSelectors.regex;
@@ -18,11 +15,6 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-/**
- * @author mazhar
- *
- * Mar 24, 2021
- */
 @Configuration
 public class SwaggerConfig {
 	public static final String DEFAULT_PATH = "/api/.*";

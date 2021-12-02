@@ -25,9 +25,12 @@ public class Supplier {
     @Column(name = "Address", nullable = false, length = 128)
     private String Address;
 
-    @Column(name = "createdAt", nullable = false, length = 128)
+    @Column(name = "created_at", nullable = false, length = 128)
     private Date createdAt;
 
-    @Column(name = "updatedAt", nullable = false, length = 128)
+    @Column(name = "updated_at", nullable = false, length = 128)
     private Date updatedAt;
+
+    @OneToOne(mappedBy = "supplierId", orphanRemoval = true, fetch = FetchType.LAZY)
+    private Purchase purchase;
 }

@@ -12,15 +12,17 @@ public class UserRole {
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
-    @OneToOne() // need clarification
+    @OneToOne()
+    @JoinColumn(name = "user_id")
     private User userId;
 
-    @OneToOne() // need clarification
+    @OneToOne()
+    @JoinColumn(name = "role_id")
     private Role roleId;
 
-    @Column(name = "createdAt", nullable = false, length = 128)
+    @Column(name = "created_at", nullable = false, length = 128)
     private Date createdAt;
 
-    @Column(name = "updatedAt", nullable = false, length = 128)
+    @Column(name = "updated_at", nullable = false, length = 128)
     private Date updatedAt;
 }
