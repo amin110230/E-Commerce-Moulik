@@ -7,18 +7,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "payment_details")
 public class PaymentDetails {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
-
-    @OneToOne()
-    @JoinColumn(name = "order_details_id", referencedColumnName = "id")
-    private OrderDetails orderDetailsId;
-
-    @OneToOne()
-    @JoinColumn(name = "stock_id")
-    private Stock stockId;
 
     @Column(name = "amount", nullable = false, length = 128)
     private double amount;
@@ -34,6 +27,14 @@ public class PaymentDetails {
 
     @Column(name = "updated_at", nullable = false, length = 128)
     private Date updatedAt;
+
+    @OneToOne
+    @JoinColumn(name = "order_details_id", referencedColumnName = "id")
+    private OrderDetails orderDetailsId;
+
+    @OneToOne
+    @JoinColumn(name = "stock_id")
+    private Stock stockId;
 
     public PaymentDetails() {
     }

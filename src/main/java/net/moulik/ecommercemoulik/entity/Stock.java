@@ -7,14 +7,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "stocks")
 public class Stock {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
-
-    @OneToOne()
-    @JoinColumn(name = "purchaseId")
-    private Purchase purchaseId;
 
     @Column(name = "quantity", nullable = false, length = 128)
     private double quantity;
@@ -28,11 +25,15 @@ public class Stock {
     @Column(name = "deleted_at", nullable = false, length = 128)
     private Date deletedAt;
 
-    @OneToOne(mappedBy = "stockId", orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "purchase_id")
+    private Purchase purchaseId;
+
+    /*@OneToOne(mappedBy = "stockId", orphanRemoval = true, fetch = FetchType.LAZY)
     private OrderItems orderItems;
 
     @OneToOne(mappedBy = "stockId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private PaymentDetails paymentDetails;
+    private PaymentDetails paymentDetails;*/
 
     public Stock() {
     }
@@ -85,19 +86,4 @@ public class Stock {
         this.deletedAt = deletedAt;
     }
 
-    public OrderItems getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(OrderItems orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public PaymentDetails getPaymentDetails() {
-        return paymentDetails;
-    }
-
-    public void setPaymentDetails(PaymentDetails paymentDetails) {
-        this.paymentDetails = paymentDetails;
-    }
 }

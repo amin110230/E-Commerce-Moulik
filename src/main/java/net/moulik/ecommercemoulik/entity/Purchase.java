@@ -8,21 +8,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "purchases")
 public class Purchase {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
-
-    @OneToOne()
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplierId;
-
-    @OneToMany(mappedBy = "purchase")
-    private List<Product> products;
-
-    @OneToOne()
-    @JoinColumn(name = "user_id")
-    private User userId;
 
     @Column(name = "quantity", nullable = false, length = 128)
     private int quantity;
@@ -41,6 +31,17 @@ public class Purchase {
 
     @OneToOne(mappedBy = "purchaseId", orphanRemoval = true, fetch = FetchType.LAZY)
     private Stock stock;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User userId;
+
+    @OneToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplierId;
+
+    @OneToMany(mappedBy = "purchase")
+    private List<Product> products;
 
     public Purchase() {
     }

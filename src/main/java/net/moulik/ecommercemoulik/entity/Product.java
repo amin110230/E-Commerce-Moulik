@@ -7,8 +7,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "products")
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
@@ -24,14 +25,6 @@ public class Product {
     @Column(name = "size", nullable = false, length = 128)
     private String size;
 
-    @ManyToOne()
-    @JoinColumn(name = "purchase_id")
-    private Purchase purchase;
-
-    @OneToOne()
-    @JoinColumn(name = "product_category_id")
-    private ProductCategory productCategoryId;
-
     @Column(name = "sku", nullable = false, length = 128)
     private String sku;
 
@@ -46,6 +39,14 @@ public class Product {
 
     @Column(name = "deleted_at", nullable = false, length = 128)
     private Date deletedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "purchase_id")
+    private Purchase purchase;
+
+    @OneToOne
+    @JoinColumn(name = "product_category_id")
+    private ProductCategory productCategoryId;
 
     public Product() {
     }

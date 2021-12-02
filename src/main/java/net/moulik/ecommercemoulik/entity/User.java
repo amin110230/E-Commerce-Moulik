@@ -7,24 +7,25 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
-    @Column(name = "firstName", nullable = false, length = 128)
+    @Column(name = "first_name", nullable = false, length = 128)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false, length = 128)
+    @Column(name = "last_name", nullable = false, length = 128)
     private String lastName;
 
-    @Column(name = "userName", nullable = false, length = 128)
+    @Column(name = "user_name", nullable = false, length = 128)
     private String userName;
 
     @Column(name = "password", nullable = false, length = 128)
     private String password;
 
-    @Column(name = "password", nullable = false, length = 128)
+    @Column(name = "mobile", nullable = false, length = 128)
     private String mobile;
 
     @Column(name = "created_at", nullable = false, length = 128)
@@ -33,14 +34,6 @@ public class User {
     @Column(name = "updated_at", nullable = false, length = 128)
     private Date updatedAt;
 
-    @OneToOne(mappedBy = "userId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private OrderDetails orderDetails;
-
-    @OneToOne(mappedBy = "userId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private Purchase purchase;
-
-    @OneToOne(mappedBy = "userId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private UserRole userRole;
 
     public User() {
     }
@@ -109,11 +102,4 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public OrderDetails getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(OrderDetails orderDetails) {
-        this.orderDetails = orderDetails;
-    }
 }

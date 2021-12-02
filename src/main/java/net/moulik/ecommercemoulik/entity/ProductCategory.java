@@ -7,8 +7,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "product_category")
 public class ProductCategory {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
@@ -27,8 +28,8 @@ public class ProductCategory {
     @Column(name = "deleted_at", nullable = false, length = 128)
     private Date deletedAt;
 
-    @OneToOne(mappedBy = "productCategoryId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private Product product;
+/*    @OneToOne(mappedBy = "productCategoryId", orphanRemoval = true, fetch = FetchType.LAZY)
+    private Product product;*/
 
     public ProductCategory() {
     }
@@ -81,11 +82,4 @@ public class ProductCategory {
         this.deletedAt = deletedAt;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

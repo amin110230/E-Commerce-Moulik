@@ -7,8 +7,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "roles")
 public class Role {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
@@ -24,8 +25,8 @@ public class Role {
     @Column(name = "deleted_at", nullable = false, length = 128)
     private Date deletedAt;
 
-    @OneToOne(mappedBy = "roleId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private UserRole userRole;
+    /*@OneToOne(mappedBy = "roleId", orphanRemoval = true, fetch = FetchType.LAZY)
+    private UserRole userRole;*/
 
     public Role() {
     }

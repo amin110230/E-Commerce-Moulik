@@ -7,14 +7,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "order_details")
 public class OrderDetails {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
-
-    @OneToOne()
-    @JoinColumn(name = "user_id")
-    private User userId;
 
     @Column(name = "total", nullable = false, length = 128)
     private double total;
@@ -34,11 +31,15 @@ public class OrderDetails {
     @Column(name = "deleted_at", nullable = false, length = 128)
     private Date deletedAt;
 
-    @OneToOne(mappedBy = "orderDetailsId", orphanRemoval = true, fetch = FetchType.LAZY)
+    /*@OneToOne(mappedBy = "orderDetailsId", orphanRemoval = true, fetch = FetchType.LAZY)
     private OrderItems orderItems;
 
     @OneToOne(mappedBy = "orderDetailsId", orphanRemoval = true, fetch = FetchType.LAZY)
-    private PaymentDetails paymentDetails;
+    private PaymentDetails paymentDetails;*/
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User userId;
 
     public OrderDetails() {
     }
