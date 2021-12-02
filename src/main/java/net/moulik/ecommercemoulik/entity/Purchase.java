@@ -17,7 +17,7 @@ public class Purchase {
     @JoinColumn(name = "supplier_id")
     private Supplier supplierId;
 
-    @OneToMany() // need clarification
+    @OneToMany(mappedBy = "purchase")
     private List<Product> products;
 
     @OneToOne()

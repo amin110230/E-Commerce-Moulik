@@ -24,6 +24,10 @@ public class Product {
     @Column(name = "size", nullable = false, length = 128)
     private String size;
 
+    @ManyToOne()
+    @JoinColumn(name = "purchase_id")
+    private Purchase purchase;
+
     @OneToOne()
     @JoinColumn(name = "product_category_id")
     private ProductCategory productCategoryId;
