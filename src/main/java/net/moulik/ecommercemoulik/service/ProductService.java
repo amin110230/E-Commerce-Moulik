@@ -12,7 +12,6 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
 
-
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -21,6 +20,17 @@ public class ProductService {
         List<Product> products = productRepository.findAll();
         List<ProductDTO> productDTOS = new ArrayList<>();
         for(Product product: products) {
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setName(product.getName());
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
+    }
+
+    public List<ProductDTO> getProductsByCategory(String categoryName) {
+        List<Product> products = productRepository.getProductsByProductCategoryId_Name(categoryName);
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product: products) {
             ProductDTO productDTO = new ProductDTO();
             productDTO.setName(product.getName());
             productDTOS.add(productDTO);

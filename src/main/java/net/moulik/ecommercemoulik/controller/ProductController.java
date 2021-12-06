@@ -9,14 +9,19 @@ import java.util.List;
 
 @RestController
 public class ProductController {
-    private final ProductService service;
+    private final ProductService productService;
 
     public ProductController(ProductService service) {
-        this.service = service;
+        this.productService = service;
     }
 
     @GetMapping("/api/products")
     public List<ProductDTO> getProducts() {
-        return service.getProducts();
+        return productService.getProducts();
+    }
+
+    @GetMapping("api/productsByCategory")
+    public List<ProductDTO> getProductsByCategory(String categoryName) {
+        return productService.getProductsByCategory(categoryName);
     }
 }
