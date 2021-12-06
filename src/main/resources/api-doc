@@ -1,0 +1,10 @@
+##Product##
+Request Type    api                            description
+  GET           api/products  -> fetch all products
+  GET           api/products/{product_id} -> find a product by product id
+  GET           api/products/{product_name} -> find a product by name
+  POST          api/products                -> create a product
+  PUT           api/products/{product_id} -> update a product by product id
+**PUT           api/products               -> update a product
+  DELETE        api/products/{product_id} -> delete a product
+  POST          api/search                 -> search e product
