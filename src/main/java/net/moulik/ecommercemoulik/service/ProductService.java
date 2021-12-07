@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ProductService {
@@ -36,5 +37,12 @@ public class ProductService {
             productDTOS.add(productDTO);
         }
         return productDTOS;
+    }
+
+    public ProductDTO getProductById(UUID productId) {
+        Product product = productRepository.getOne(productId);
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setName(product.getName());
+        return productDTO;
     }
 }

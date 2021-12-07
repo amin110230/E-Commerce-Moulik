@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ProductController {
@@ -23,5 +24,10 @@ public class ProductController {
     @GetMapping("api/productsByCategory")
     public List<ProductDTO> getProductsByCategory(String categoryName) {
         return productService.getProductsByCategory(categoryName);
+    }
+
+    @GetMapping("api/products/{product_id}")
+    public ProductDTO getProductById(UUID productId) {
+        return productService.getProductById(productId);
     }
 }
