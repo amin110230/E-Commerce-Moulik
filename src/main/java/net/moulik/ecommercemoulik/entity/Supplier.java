@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "suppliers")
-public class Supplier {
+public class Supplier extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,12 +24,6 @@ public class Supplier {
 
     @Column(name = "Address", nullable = false, length = 128)
     private String Address;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
 
     /*@OneToOne(mappedBy = "supplierId", orphanRemoval = true, fetch = FetchType.LAZY)
     private Purchase purchase;*/
@@ -75,22 +69,6 @@ public class Supplier {
 
     public void setAddress(String address) {
         Address = address;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
 }

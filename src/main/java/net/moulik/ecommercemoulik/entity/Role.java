@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,29 +45,5 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
     }
 }

@@ -22,12 +22,6 @@ public class PaymentDetails {
     @Column(name = "status", nullable = false, length = 128)
     private String status;
 
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
-
     @OneToOne
     @JoinColumn(name = "order_details_id", referencedColumnName = "id")
     private OrderDetails orderDetailsId;
@@ -85,21 +79,5 @@ public class PaymentDetails {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

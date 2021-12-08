@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,13 +27,6 @@ public class User {
 
     @Column(name = "mobile", nullable = false, length = 128)
     private String mobile;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
-
 
     public User() {
     }
@@ -84,22 +77,6 @@ public class User {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
 }

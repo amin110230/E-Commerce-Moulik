@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "purchases")
-public class Purchase {
+public class Purchase extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,12 +22,6 @@ public class Purchase {
 
     @Column(name = "total", nullable = false, length = 128)
     private double total;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
 
     @OneToOne(mappedBy = "purchaseId", orphanRemoval = true, fetch = FetchType.LAZY)
     private Stock stock;
@@ -100,21 +94,5 @@ public class Purchase {
 
     public void setTotal(double total) {
         this.total = total;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

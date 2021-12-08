@@ -5,7 +5,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "products")
-public class Product extends BaseLog{
+public class Product extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -104,6 +104,5 @@ public class Product extends BaseLog{
     public void setPrice(double price) {
         this.price = price;
     }
-
 
 }

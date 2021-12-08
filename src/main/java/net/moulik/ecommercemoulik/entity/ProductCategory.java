@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "product_category")
-public class ProductCategory {
+public class ProductCategory extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,15 +18,6 @@ public class ProductCategory {
 
     @Column(name = "description", nullable = false, length = 128)
     private String description;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
-
-    @Column(name = "deleted_at", nullable = false, length = 128)
-    private Date deletedAt;
 
 /*    @OneToOne(mappedBy = "productCategoryId", orphanRemoval = true, fetch = FetchType.LAZY)
     private Product product;*/
@@ -56,30 +47,6 @@ public class ProductCategory {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
     }
 
 }

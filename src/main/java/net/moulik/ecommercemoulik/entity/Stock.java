@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "stocks")
-public class Stock {
+public class Stock extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,15 +15,6 @@ public class Stock {
 
     @Column(name = "quantity", nullable = false, length = 128)
     private double quantity;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
-
-    @Column(name = "deleted_at", nullable = false, length = 128)
-    private Date deletedAt;
 
     @OneToOne
     @JoinColumn(name = "purchase_id")
@@ -60,30 +51,6 @@ public class Stock {
 
     public void setQuantity(double quantity) {
         this.quantity = quantity;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
     }
 
 }

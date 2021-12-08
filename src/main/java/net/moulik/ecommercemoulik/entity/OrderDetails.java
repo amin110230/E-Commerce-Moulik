@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "order_details")
-public class OrderDetails {
+public class OrderDetails extends BaseLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,15 +21,6 @@ public class OrderDetails {
 
     @Column(name = "status", nullable = false, length = 128)
     private String status;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
-
-    @Column(name = "deleted_at", nullable = false, length = 128)
-    private Date deletedAt;
 
     /*@OneToOne(mappedBy = "orderDetailsId", orphanRemoval = true, fetch = FetchType.LAZY)
     private OrderItems orderItems;
@@ -82,29 +73,5 @@ public class OrderDetails {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
     }
 }
