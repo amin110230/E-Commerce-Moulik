@@ -1,12 +1,11 @@
 package net.moulik.ecommercemoulik.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product extends BaseLog{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,15 +29,6 @@ public class Product {
 
     @Column(name = "price", nullable = false, length = 128)
     private double price;
-
-    @Column(name = "created_at", nullable = false, length = 128)
-    private Date createdAt;
-
-    @Column(name = "updated_at", nullable = false, length = 128)
-    private Date updatedAt;
-
-    @Column(name = "deleted_at", nullable = false, length = 128)
-    private Date deletedAt;
 
     @ManyToOne
     @JoinColumn(name = "purchase_id")
@@ -115,27 +105,5 @@ public class Product {
         this.price = price;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
-    }
 }

@@ -3,6 +3,7 @@ package net.moulik.ecommercemoulik.controller;
 import net.moulik.ecommercemoulik.dto.ProductDTO;
 import net.moulik.ecommercemoulik.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,7 +28,8 @@ public class ProductController {
     }
 
     @GetMapping("api/products/{product_id}")
-    public ProductDTO getProductById(UUID productId) {
+    public ProductDTO getProductById(@PathVariable("product_id" +
+            "") UUID productId) {
         return productService.getProductById(productId);
     }
 }
