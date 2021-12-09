@@ -39,13 +39,14 @@ public class ProductController {
     }
 
     @PutMapping("products/{product_id}")
-    public void updateProduct(@RequestBody ProductDTO productDTO, @PathVariable("product_id") String id) {
-        productService.updateProduct(productDTO);
+    public void updateProduct(@RequestBody ProductUpdateDTO productUpdateDTO, @PathVariable("product_id")  UUID productId) {
+        productService.updateProduct(productUpdateDTO, productId);
     }
 
     @PutMapping("products")
     public void updateProduct(@RequestBody ProductUpdateDTO updateDTO) {
 //        productService.updateProduct(productId);
+        /*another way to update product*/
     }
 
     @DeleteMapping("products/{product_id}")
