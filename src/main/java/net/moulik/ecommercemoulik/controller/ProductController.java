@@ -1,6 +1,8 @@
 package net.moulik.ecommercemoulik.controller;
 
 import net.moulik.ecommercemoulik.dto.ProductDTO;
+import net.moulik.ecommercemoulik.dto.ProductSearchDTO;
+import net.moulik.ecommercemoulik.dto.ProductUpdateDTO;
 import net.moulik.ecommercemoulik.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/api/")
 public class ProductController {
     private final ProductService productService;
 
@@ -15,46 +18,43 @@ public class ProductController {
         this.productService = service;
     }
 
-    @GetMapping("/api/products")
+    @GetMapping("products")
     public List<ProductDTO> getProducts() {
         return productService.getProducts();
     }
 
-    @GetMapping("api/productsByCategory")
+    @GetMapping("productsByCategory")
     public List<ProductDTO> getProductsByCategory(String categoryName) {
         return productService.getProductsByCategory(categoryName);
     }
 
-    @GetMapping("api/products/{product_id}")
-    public ProductDTO getProductById(@PathVariable("product_id" +
-            "") UUID productId) {
+    @GetMapping("products/{product_id}")
+    public ProductDTO getProductById(@PathVariable("product_id") UUID productId) {
         return productService.getProductById(productId);
     }
 
-    @PostMapping("api/products")
+    @PostMapping("products")
     public void newProduct(@RequestBody ProductDTO productDTO) {
-        productService.newProduct(productDTO);
+        productService.createProduct(productDTO);
     }
 
-    @PutMapping("api/products/{product_id}")
-    public void updateProduct(@PathVariable("product_id" +
-            "") UUID productId) {
-        productService.updateProduct(productId);
+    @PutMapping("products/{product_id}")
+    public void updateProduct(@RequestBody ProductDTO productDTO, @PathVariable("product_id") String id) {
+        productService.updateProduct(productDTO);
     }
 
-    @PutMapping("api/products")
-    public void updateProduct() {
+    @PutMapping("products")
+    public void updateProduct(@RequestBody ProductUpdateDTO updateDTO) {
 //        productService.updateProduct(productId);
     }
 
-    @DeleteMapping("api/products/{product_id}")
-    public void deleteProduct(@PathVariable("product_id" +
-            "") UUID productId) {
+    @DeleteMapping("products/{product_id}")
+    public void deleteProduct(@PathVariable("product_id") UUID productId) {
         productService.deleteProduct(productId);
     }
 
-    @PostMapping("api/search")
-    public void searchProduct() {
+    @PostMapping("search")
+    public void searchProduct(ProductSearchDTO searchDTO) {
         productService.searchProduct();
     }
 }

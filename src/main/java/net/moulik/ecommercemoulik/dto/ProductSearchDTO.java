@@ -1,0 +1,4 @@
+package net.moulik.ecommercemoulik.dto;
+
+public class ProductSearchDTO {
+}

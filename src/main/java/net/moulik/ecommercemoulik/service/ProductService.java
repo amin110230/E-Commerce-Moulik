@@ -50,17 +50,17 @@ public class ProductService {
 
     }
 
-    public void newProduct(ProductDTO productDTO) {
+    public void createProduct(ProductDTO productDTO) {
         Product product = new Product();
         product.setName(productDTO.getName());
         productRepository.save(product);
     }
 
-    public void updateProduct(UUID productId) {
-        Optional<Product> product = productRepository.findById(productId);
+    public void updateProduct(ProductDTO product) {
+        /*Optional<Product> product = productRepository.findById(productId);
         if (product.isPresent()) {
 
-        }
+        }*/
     }
 
     public void deleteProduct(UUID productId) {
