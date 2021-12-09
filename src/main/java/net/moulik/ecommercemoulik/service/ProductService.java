@@ -49,4 +49,25 @@ public class ProductService {
         return null;
 
     }
+
+    public void newProduct(ProductDTO productDTO) {
+        Product product = new Product();
+        product.setName(productDTO.getName());
+        productRepository.save(product);
+    }
+
+    public void updateProduct(UUID productId) {
+        Optional<Product> product = productRepository.findById(productId);
+        if (product.isPresent()) {
+
+        }
+    }
+
+    public void deleteProduct(UUID productId) {
+        productRepository.deleteById(productId);
+    }
+
+    public void searchProduct() {
+//        productRepository.findById();
+    }
 }

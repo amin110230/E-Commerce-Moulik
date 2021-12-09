@@ -2,9 +2,7 @@ package net.moulik.ecommercemoulik.controller;
 
 import net.moulik.ecommercemoulik.dto.ProductDTO;
 import net.moulik.ecommercemoulik.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,5 +29,32 @@ public class ProductController {
     public ProductDTO getProductById(@PathVariable("product_id" +
             "") UUID productId) {
         return productService.getProductById(productId);
+    }
+
+    @PostMapping("api/products")
+    public void newProduct(@RequestBody ProductDTO productDTO) {
+        productService.newProduct(productDTO);
+    }
+
+    @PutMapping("api/products/{product_id}")
+    public void updateProduct(@PathVariable("product_id" +
+            "") UUID productId) {
+        productService.updateProduct(productId);
+    }
+
+    @PutMapping("api/products")
+    public void updateProduct() {
+//        productService.updateProduct(productId);
+    }
+
+    @DeleteMapping("api/products/{product_id}")
+    public void deleteProduct(@PathVariable("product_id" +
+            "") UUID productId) {
+        productService.deleteProduct(productId);
+    }
+
+    @PostMapping("api/search")
+    public void searchProduct() {
+        productService.searchProduct();
     }
 }

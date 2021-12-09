@@ -3,8 +3,8 @@ Request Type    api                            description                      
   GET           api/products  -> fetch all products                                  done
   GET           api/products/{product_id} -> find a product by product id            done
   GET           api/products/{product_name} -> find a product by name                done
-  POST          api/products                -> create a product
+  POST          api/products                -> create a product                      done
   PUT           api/products/{product_id} -> update a product by product id
 **PUT           api/products               -> update a product
   DELETE        api/products/{product_id} -> delete a product
-  POST          api/search                 -> search e product
+  POST          api/search                 -> search a product
