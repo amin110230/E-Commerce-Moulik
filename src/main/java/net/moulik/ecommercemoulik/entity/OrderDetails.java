@@ -16,7 +16,7 @@ public class OrderDetails extends BaseLog {
     @Column(name = "total", nullable = false, length = 128)
     private double total;
 
-    @Column(name = "details", nullable = false, length = 128)
+    @Column(name = "details", nullable = true, length = 128)
     private String details;
 
     @Column(name = "status", nullable = false, length = 128)
