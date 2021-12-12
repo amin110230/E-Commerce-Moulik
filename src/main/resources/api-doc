@@ -1,13 +1,16 @@
 ##Product##
 Request Type    api                            description                          action
-  GET           api/products  -> fetch all products                                  done
-  GET           api/products/{product_id} -> find a product by product id            done
-  GET           api/products/{product_name} -> find a product by name                done
-  POST          api/products                -> create a product                      done
-  PUT           api/products/{product_id} -> update a product by product id          done
-**PUT           api/products               -> update a product
-  DELETE        api/products/{product_id} -> delete a product                        done
-  POST          api/search                 -> search a product                       done
+  GET           api/products                   -> fetch all products                 done
+  GET           api/products/{product_id}      -> find a product by product id       done
+  GET           api/products/{product_name}    -> find a product by name             done
+  POST          api/products                   -> create a product                   done
+  PUT           api/products/{product_id}      -> update a product by product id     done
+**PUT           api/products                   -> update a product
+  DELETE        api/products/{product_id}      -> delete a product                   done
+  POST          api/search                     -> search a product                   done
 
 ##OrderDetails##
 Request Type    api                            description                          action
+  GET           api/orders                     -> fetch all orders                   done
+  GET           api/orders/{order_id}          -> find a order by order id           done
+  GET           api/orders/{order_status}      -> find a order by status             done
