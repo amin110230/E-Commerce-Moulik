@@ -1,11 +1,9 @@
 package net.moulik.ecommercemoulik.controller;
 
 import net.moulik.ecommercemoulik.dto.OrderDetailsDTO;
+import net.moulik.ecommercemoulik.dto.ProductDTO;
 import net.moulik.ecommercemoulik.service.OrderDetailsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,6 +30,16 @@ public class OrderDetailsController {
     @GetMapping("orders/{order_status}")
     public List<OrderDetailsDTO> getOrderByStatus(@PathVariable("order_status") String orderStatus) {
         return orderDetailsService.getOrderByStatus(orderStatus);
+    }
+
+    @GetMapping("orders/users/{id}")
+    public List<OrderDetailsDTO> getOrdersByUserId(@PathVariable("user_id") UUID userId) {
+        return null; // need clarification
+    }
+
+    @PostMapping("orders")
+    public void newProduct(@RequestBody OrderDetailsDTO orderDetailsDTO) {
+        orderDetailsService.createProduct(orderDetailsDTO);
     }
 
 
