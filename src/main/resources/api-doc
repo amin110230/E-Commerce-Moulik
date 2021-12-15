@@ -16,7 +16,7 @@ Request Type    api                            description                      
   GET           api/orders/{order_status}      -> find a order by status                done
   GET           api/orders/users/{id}          -> find orders of a user
   POST          api/orders                     -> create a order
-  PUT           api/orders/{order_id}          -> update a order by product id
+  PUT           api/orders/{order_id}          -> update a order by order id
   DELETE        api/orders/{order_id}          -> delete a order
 
 ##OrderItems##

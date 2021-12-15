@@ -2,6 +2,7 @@ package net.moulik.ecommercemoulik.service;
 
 import net.moulik.ecommercemoulik.dao.OrderDetailsRepository;
 import net.moulik.ecommercemoulik.dto.OrderDetailsDTO;
+import net.moulik.ecommercemoulik.dto.OrderDetailsUpdateDTO;
 import net.moulik.ecommercemoulik.entity.OrderDetails;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +54,28 @@ public class OrderDetailsService {
         return orderDetailsDTOList;
     }
 
-    public void createProduct(OrderDetailsDTO orderDetailsDTO) {
+    public void createOrderDetails(OrderDetailsDTO orderDetailsDTO) {
+        OrderDetails orderDetails = new OrderDetails();
+        orderDetails.setTotal(orderDetailsDTO.getTotal());
+        orderDetails.setDetails(orderDetailsDTO.getDetails());
+        orderDetails.setStatus(orderDetailsDTO.getStatus());
+        // need to relate with OrderItems
+        orderDetailsRepository.save(orderDetails);
+    }
 
+    public void updateOrderDetails(OrderDetailsUpdateDTO orderDetailsUpdateDTO, UUID orderId) {
+        Optional<OrderDetails> orderDetails = orderDetailsRepository.findById(orderId);
+        if (orderDetails.isPresent()) {
+            OrderDetails ods = orderDetails.get();
+            ods.setId(orderDetailsUpdateDTO.getId());
+            ods.setTotal(orderDetailsUpdateDTO.getTotal());
+            ods.setDetails(orderDetailsUpdateDTO.getDetails());
+            ods.setStatus(orderDetailsUpdateDTO.getStatus());
+            orderDetailsRepository.save(ods);
+        }
+    }
+
+    public void deleteOrderDetails(UUID orderId) {
+        orderDetailsRepository.deleteById(orderId);
     }
 }

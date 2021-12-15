@@ -1,6 +1,7 @@
 package net.moulik.ecommercemoulik.controller;
 
 import net.moulik.ecommercemoulik.dto.OrderDetailsDTO;
+import net.moulik.ecommercemoulik.dto.OrderDetailsUpdateDTO;
 import net.moulik.ecommercemoulik.dto.ProductDTO;
 import net.moulik.ecommercemoulik.service.OrderDetailsService;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,17 @@ public class OrderDetailsController {
 
     @PostMapping("orders")
     public void newProduct(@RequestBody OrderDetailsDTO orderDetailsDTO) {
-        orderDetailsService.createProduct(orderDetailsDTO);
+        orderDetailsService.createOrderDetails(orderDetailsDTO);
     }
 
+    @PutMapping("orders/{order_id}")
+    public void updateOrderDetails(@RequestBody OrderDetailsUpdateDTO orderDetailsUpdateDTO, @PathVariable("order_id") UUID orderId) {
+        orderDetailsService.updateOrderDetails(orderDetailsUpdateDTO, orderId);
+    }
+
+    @DeleteMapping("orders/{order_id}")
+    public void deleteOrderDetails(@PathVariable("order_id") UUID orderId) {
+        orderDetailsService.deleteOrderDetails(orderId);
+    }
 
 }
