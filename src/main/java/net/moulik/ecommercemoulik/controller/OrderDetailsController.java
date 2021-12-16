@@ -51,17 +51,30 @@ public class OrderDetailsController {
 
     @PostMapping("orders")
     public ResponseEntity<ResponseModel> newProduct(@RequestBody OrderDetailsDTO orderDetailsDTO){
-        orderDetailsService.createOrderDetails(orderDetailsDTO);
+        orderDetailsService.createOrderDetails(orderDetailsDTO)
+        ResponseModel model = new ResponseModel();
+        model.setMessage("order is created successfully!");
+        model.setData(null);
+        return ResponseEntity.ok(model);
+
     }
 
     @PutMapping("orders/{order_id}")
     public ResponseEntity<ResponseModel> updateOrderDetails(@RequestBody OrderDetailsUpdateDTO orderDetailsUpdateDTO, @PathVariable("order_id") UUID orderId) {
         orderDetailsService.updateOrderDetails(orderDetailsUpdateDTO, orderId);
+        ResponseModel model = new ResponseModel();
+        model.setMessage("order is updated successfully!");
+        model.setData(null);
+        return ResponseEntity.ok(model);
     }
 
     @DeleteMapping("orders/{order_id}")
     public ResponseEntity<ResponseModel> deleteOrderDetails(@PathVariable("order_id") UUID orderId) {
         orderDetailsService.deleteOrderDetails(orderId);
+        ResponseModel model = new ResponseModel();
+        model.setMessage("order is deleted successfully!");
+        model.setData(null);
+        return ResponseEntity.ok(model);
     }
 
 }
