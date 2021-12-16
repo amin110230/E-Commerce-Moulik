@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/")
-public class OrderDetailsController {
+public class OrderDetailsController extends BaseController{
     private final OrderDetailsService orderDetailsService;
 
     public OrderDetailsController(OrderDetailsService orderDetailsService) {
@@ -59,12 +59,8 @@ public class OrderDetailsController {
             return ResponseEntity.ok(model);
         }
         catch (Exception e) {
-            ResponseModel model = new ResponseModel();
-            model.setMessage("order is not created!");
-            model.setData(null);
-            return ResponseEntity.ok(model);
+          return doHandleException(e);
         }
-
     }
 
     @PutMapping("orders/{order_id}")
