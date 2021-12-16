@@ -3,7 +3,9 @@ package net.moulik.ecommercemoulik.controller;
 import net.moulik.ecommercemoulik.dto.OrderDetailsDTO;
 import net.moulik.ecommercemoulik.dto.OrderDetailsUpdateDTO;
 import net.moulik.ecommercemoulik.dto.ProductDTO;
+import net.moulik.ecommercemoulik.dto.ResponseModel;
 import net.moulik.ecommercemoulik.service.OrderDetailsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,37 +21,46 @@ public class OrderDetailsController {
     }
 
     @GetMapping("orders")
-    public List<OrderDetailsDTO> getOrders () {
-        return orderDetailsService.getOrders();
+    public ResponseEntity<ResponseModel> getOrders () {
+        ResponseModel model = new ResponseModel();
+        model.setMessage("");
+        model.setData(orderDetailsService.getOrders());
+        return ResponseEntity.ok(model);
     }
 
     @GetMapping("orders/{order_id}")
-    public OrderDetailsDTO getOrderById (@PathVariable("order_id") UUID orderId) {
-        return orderDetailsService.getOrderById(orderId);
+    public ResponseEntity<ResponseModel> getOrderById (@PathVariable("order_id") UUID orderId) {
+        ResponseModel model = new ResponseModel();
+        model.setMessage("");
+        model.setData(orderDetailsService.getOrderById(orderId));
+        return ResponseEntity.ok(model);
     }
 
     @GetMapping("orders/{order_status}")
-    public List<OrderDetailsDTO> getOrderByStatus(@PathVariable("order_status") String orderStatus) {
-        return orderDetailsService.getOrderByStatus(orderStatus);
+    public ResponseEntity<ResponseModel> getOrderByStatus(@PathVariable("order_status") String orderStatus) {
+        ResponseModel model = new ResponseModel();
+        model.setMessage("");
+        model.setData(orderDetailsService.getOrderByStatus(orderStatus));
+        return ResponseEntity.ok(model);
     }
 
-    @GetMapping("orders/users/{id}")
-    public List<OrderDetailsDTO> getOrdersByUserId(@PathVariable("user_id") UUID userId) {
+    @GetMapping("orders/users/{user_id}")
+    public ResponseEntity<ResponseModel> getOrdersByUserId(@PathVariable("user_id") UUID userId) {
         return null; // need clarification
     }
 
     @PostMapping("orders")
-    public void newProduct(@RequestBody OrderDetailsDTO orderDetailsDTO) {
+    public ResponseEntity<ResponseModel> newProduct(@RequestBody OrderDetailsDTO orderDetailsDTO){
         orderDetailsService.createOrderDetails(orderDetailsDTO);
     }
 
     @PutMapping("orders/{order_id}")
-    public void updateOrderDetails(@RequestBody OrderDetailsUpdateDTO orderDetailsUpdateDTO, @PathVariable("order_id") UUID orderId) {
+    public ResponseEntity<ResponseModel> updateOrderDetails(@RequestBody OrderDetailsUpdateDTO orderDetailsUpdateDTO, @PathVariable("order_id") UUID orderId) {
         orderDetailsService.updateOrderDetails(orderDetailsUpdateDTO, orderId);
     }
 
     @DeleteMapping("orders/{order_id}")
-    public void deleteOrderDetails(@PathVariable("order_id") UUID orderId) {
+    public ResponseEntity<ResponseModel> deleteOrderDetails(@PathVariable("order_id") UUID orderId) {
         orderDetailsService.deleteOrderDetails(orderId);
     }
 
