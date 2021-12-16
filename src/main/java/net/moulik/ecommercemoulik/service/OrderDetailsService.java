@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class OrderDetailsService {
+public class OrderDetailsService extends BaseService{
     private final OrderDetailsRepository orderDetailsRepository;
 
     public OrderDetailsService(OrderDetailsRepository orderDetailsRepository) {
@@ -54,13 +54,18 @@ public class OrderDetailsService {
         return orderDetailsDTOList;
     }
 
-    public void createOrderDetails(OrderDetailsDTO orderDetailsDTO) {
-        OrderDetails orderDetails = new OrderDetails();
-        orderDetails.setTotal(orderDetailsDTO.getTotal());
-        orderDetails.setDetails(orderDetailsDTO.getDetails());
-        orderDetails.setStatus(orderDetailsDTO.getStatus());
-        // need to relate with OrderItems
-        orderDetailsRepository.save(orderDetails);
+    public void createOrderDetails(OrderDetailsDTO orderDetailsDTO) throws Exception {
+        try {
+            OrderDetails orderDetails = new OrderDetails();
+            orderDetails.setTotal(orderDetailsDTO.getTotal());
+            orderDetails.setDetails(orderDetailsDTO.getDetails());
+            orderDetails.setStatus(orderDetailsDTO.getStatus());
+            // need to relate with OrderItems
+            orderDetailsRepository.save(orderDetails);
+        }
+        catch (Exception e) {
+            doHandleException(e);
+        }
     }
 
     public void updateOrderDetails(OrderDetailsUpdateDTO orderDetailsUpdateDTO, UUID orderId) {
