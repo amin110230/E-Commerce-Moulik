@@ -51,11 +51,19 @@ public class OrderDetailsController {
 
     @PostMapping("orders")
     public ResponseEntity<ResponseModel> newProduct(@RequestBody OrderDetailsDTO orderDetailsDTO){
-        orderDetailsService.createOrderDetails(orderDetailsDTO)
-        ResponseModel model = new ResponseModel();
-        model.setMessage("order is created successfully!");
-        model.setData(null);
-        return ResponseEntity.ok(model);
+        try {
+            orderDetailsService.createOrderDetails(orderDetailsDTO);
+            ResponseModel model = new ResponseModel();
+            model.setMessage("order is created successfully!");
+            model.setData(null);
+            return ResponseEntity.ok(model);
+        }
+        catch (Exception e) {
+            ResponseModel model = new ResponseModel();
+            model.setMessage("order is not created!");
+            model.setData(null);
+            return ResponseEntity.ok(model);
+        }
 
     }
 
