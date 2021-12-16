@@ -30,10 +30,15 @@ public class OrderDetailsController extends BaseController{
 
     @GetMapping("orders/{order_id}")
     public ResponseEntity<ResponseModel> getOrderById (@PathVariable("order_id") UUID orderId) {
-        ResponseModel model = new ResponseModel();
-        model.setMessage("");
-        model.setData(orderDetailsService.getOrderById(orderId));
-        return ResponseEntity.ok(model);
+        try {
+            ResponseModel model = new ResponseModel();
+            model.setMessage("");
+            model.setData(orderDetailsService.getOrderById(orderId));
+            return ResponseEntity.ok(model);
+        }
+        catch (Exception e) {
+            return doHandleException(e);
+        }
     }
 
     @GetMapping("orders/{order_status}")
@@ -65,11 +70,16 @@ public class OrderDetailsController extends BaseController{
 
     @PutMapping("orders/{order_id}")
     public ResponseEntity<ResponseModel> updateOrderDetails(@RequestBody OrderDetailsUpdateDTO orderDetailsUpdateDTO, @PathVariable("order_id") UUID orderId) {
-        orderDetailsService.updateOrderDetails(orderDetailsUpdateDTO, orderId);
-        ResponseModel model = new ResponseModel();
-        model.setMessage("order is updated successfully!");
-        model.setData(null);
-        return ResponseEntity.ok(model);
+        try {
+            orderDetailsService.updateOrderDetails(orderDetailsUpdateDTO, orderId);
+            ResponseModel model = new ResponseModel();
+            model.setMessage("order is updated successfully!");
+            model.setData(null);
+            return ResponseEntity.ok(model);
+        }
+        catch (Exception e) {
+            return doHandleException(e);
+        }
     }
 
     @DeleteMapping("orders/{order_id}")
